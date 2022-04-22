@@ -32,3 +32,6 @@ inputs:
   GITHUB_TOKEN:
     description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
     required: true
+  CNAME_DOMAIN:
+    description: 'Domain where the page will be published'
+    required: false

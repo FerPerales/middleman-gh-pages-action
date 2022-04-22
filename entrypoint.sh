@@ -28,4 +28,10 @@ git push --force $remote_repo master:$remote_branch > /dev/null 2>&1
 echo "Removing git..."
 rm -fr .git
 cd -
+if [ -z ${INPUT_CNAME_DOMAIN+y} ];
+then
+  echo "Creating CNAME"
+  echo "${INPUT_CNAME_DOMAIN}" > CNAME
+fi
+
 echo 'Done'
