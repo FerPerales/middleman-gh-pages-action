@@ -18,16 +18,16 @@ remote_branch=${INPUT_REMOTE_BRANCH}
 git init
 git config user.name "${INPUT_GITHUB_ACTOR}"
 git config user.email "${INPUT_GITHUB_ACTOR}@users.noreply.github.com"
-git add .
 if [[ -n "${INPUT_CNAME_DOMAIN}" ]];
 then
   echo "Creating CNAME"
   echo "${INPUT_CNAME_DOMAIN}" > CNAME
 fi
-echo -n "Creating .nojekyll file"
+echo "Creating .nojekyll file"
 touch .nojekyll
-echo -n 'Files to Commit:'
+echo 'Files to Commit:'
 ls -l
+git add .
 echo 'Committing files...'
 git commit -m'Middleman build' > /dev/null 2>&1
 echo "Pushing... to $remote_repo master:$remote_branch"
