@@ -33,5 +33,5 @@ then
   echo "Creating CNAME"
   echo "${INPUT_CNAME_DOMAIN}" > CNAME
 fi
-
+touch .nojekyll
 echo 'Done'
