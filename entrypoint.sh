@@ -20,6 +20,12 @@ git config user.name "${INPUT_GITHUB_ACTOR}"
 git config user.email "${INPUT_GITHUB_ACTOR}@users.noreply.github.com"
 git add .
 echo -n 'Files to Commit:'
+if [[ -n "${INPUT_CNAME_DOMAIN}" ]];
+then
+  echo "Creating CNAME"
+  echo "${INPUT_CNAME_DOMAIN}" > CNAME
+fi
+touch .nojekyll
 ls -l | wc -l
 echo 'Committing files...'
 git commit -m'Middleman build' > /dev/null 2>&1
@@ -28,10 +34,4 @@ git push --force $remote_repo master:$remote_branch > /dev/null 2>&1
 echo "Removing git..."
 rm -fr .git
 cd -
-if [[ -n "${INPUT_CNAME_DOMAIN}" ]];
-then
-  echo "Creating CNAME"
-  echo "${INPUT_CNAME_DOMAIN}" > CNAME
-fi
-touch .nojekyll
 echo 'Done'
