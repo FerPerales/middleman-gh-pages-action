@@ -19,14 +19,15 @@ git init
 git config user.name "${INPUT_GITHUB_ACTOR}"
 git config user.email "${INPUT_GITHUB_ACTOR}@users.noreply.github.com"
 git add .
-echo -n 'Files to Commit:'
 if [[ -n "${INPUT_CNAME_DOMAIN}" ]];
 then
   echo "Creating CNAME"
   echo "${INPUT_CNAME_DOMAIN}" > CNAME
 fi
+echo -n "Creating .nojekyll file"
 touch .nojekyll
-ls -l | wc -l
+echo -n 'Files to Commit:'
+ls -l
 echo 'Committing files...'
 git commit -m'Middleman build' > /dev/null 2>&1
 echo "Pushing... to $remote_repo master:$remote_branch"
