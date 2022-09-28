@@ -9,7 +9,7 @@ A GitHub Action for building and deploying a Middleman repo to its `gh-pages` br
 * `GITHUB_ACTOR`: Name of the deploy actor (optional, defaults to `deploy`)
 * `REMOTE_BRANCH`: Name of the branch to push the project to (optional, detaults to `gh-pages`)
 * `SITE_LOCATION`: Location of your Middleman project within the repo (optional, defaults to project root)
-
+* `CNAME_DOMAIN`: Domain where you are publishing your website (optional)
 ## Example
 
 Add this to `.github/workflows/gh-pages.yml` of your project.
@@ -31,5 +31,6 @@ jobs:
         with:
           REMOTE_BRANCH: gh-pages
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        uses: yurikoval/middleman-gh-pages-action@master
+          CNAME_DOMAIN: example.com
+        uses: ferperales/middleman-gh-pages-action@master
 ```
